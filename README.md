@@ -20,7 +20,7 @@ require_once 'vendor/autoload.php';
 use AlexaCRM\CRMToolkit\Client as OrganizationService;
 use AlexaCRM\CRMToolkit\Settings;
 
-$contactId = '1d2fc62f-1c56-448b-b546-edfb6d6fec5c';
+$contactIdUpdate = '1d2fc62f-1c56-448b-b546-edfb6d6fec5c';
 $options = [
     'serverUrl' => 'https://org.crmN.dynamics.com',
     'username' => 'portal@org.onmicrosoft.com',
@@ -32,7 +32,7 @@ $serviceSettings = new Settings( $options );
 $service = new OrganizationService( $serviceSettings );
 
 // retrieve a contact and update its fields
-$contact = $service->entity( 'contact', $guid );
+$contact = $service->entity( 'contact', $contactIdUpdate );
 $contact->firstname = explode( '@', $contact->emailaddress1 )[0];
 $contact->update();
 printf( 'Info for %s %s updated.', $contact->firstname, $contact->lastname );
